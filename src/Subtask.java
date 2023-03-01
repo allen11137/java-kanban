@@ -1,4 +1,4 @@
-public class Subtask implements TaskInterface{
+public class Subtask extends Task {
     private int id;
     private int epicId;
     private String name;

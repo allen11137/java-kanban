@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Epic implements TaskInterface{
+public class Epic extends Task {
     private int id;
     private String name;
     private String additional;

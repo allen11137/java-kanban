@@ -39,18 +39,18 @@ public class Manager {
         }
     }
 
-    public void createTask(TaskInterface task) {
+    public void createTask(Task task) {
         if (task instanceof Task) {
-            ((Task) task).setId(ids);
-            ((Task) task).setStatus(Status.NEW);
-            tasks.put(ids, (Task) task);
+            task.setId(ids);
+            task.setStatus(Status.NEW);
+            tasks.put(ids, task);
         } else if (task instanceof Epic) {
-            ((Epic) task).setId(ids);
-            ((Epic) task).setStatus(Status.NEW);
+            task.setId(ids);
+            task.setStatus(Status.NEW);
             epics.put(ids, (Epic) task);
         } else if (task instanceof Subtask) {
-            ((Subtask) task).setId(ids);
-            ((Subtask) task).setStatus(Status.NEW);
+            task.setId(ids);
+            task.setStatus(Status.NEW);
             subtasks.put(ids, (Subtask) task);
 
             int epicId = ((Subtask) task).getEpicId();
@@ -60,13 +60,13 @@ public class Manager {
         ids++;
     }
 
-    public void updateTask(TaskInterface task) {
+    public void updateTask(Task task) {
         if (task instanceof Task) {
-            tasks.put(((Task) task).getId(), (Task) task);
+            tasks.put(task.getId(), task);
         } else if (task instanceof Epic) {
-            epics.put(((Epic) task).getId(), (Epic) task);
+            epics.put(task.getId(), (Epic) task);
         } else if (task instanceof Subtask) {
-            subtasks.put(((Subtask) task).getId(), (Subtask) task);
+            subtasks.put(task.getId(), (Subtask) task);
             int epicId = ((Subtask) task).getEpicId();
             Epic epic = epics.get(epicId);
             int countSubtasks = epic.getSubtasks().size();

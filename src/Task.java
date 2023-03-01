@@ -1,4 +1,4 @@
-public class Task implements TaskInterface {
+public class Task {
     private int id;
     private String name;
     private String additional;
@@ -7,6 +7,9 @@ public class Task implements TaskInterface {
     public Task(String name, String additional) {
         this.name = name;
         this.additional = additional;
+    }
+
+    public Task() {
     }
 
     public int getId() {
