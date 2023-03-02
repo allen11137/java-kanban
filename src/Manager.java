@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Manager {
-    private static Integer ids = 1;
-    private static Map<Integer,Task> tasks = new HashMap<>();
-    private static Map<Integer, Epic> epics = new HashMap<>();
-    private static Map<Integer, Subtask> subtasks = new HashMap<>();
+    private  Integer ids = 1;
+    private  Map<Integer,Task> tasks = new HashMap<>();
+    private  Map<Integer, Epic> epics = new HashMap<>();
+    private  Map<Integer, Subtask> subtasks = new HashMap<>();
 
     public void getAllTasks() {
         for (Task task : tasks.values()) {
@@ -55,6 +55,7 @@ public class Manager {
 
             int epicId = ((Subtask) task).getEpicId();
             Epic epic = epics.get(epicId);
+            epic.setStatus(Status.NEW);
             epic.setSubtasks((Subtask) task);
         }
         ids++;
