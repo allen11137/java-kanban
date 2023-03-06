@@ -6,6 +6,19 @@ public class Epic extends Task {
     private String name;
     private String additional;
     private Status status;
+
+    @Override
+    public String toString() {
+        return "Epic{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", additional='" + additional + '\'' +
+                ", status=" + status +
+                ", subtasks=" + subtasks +
+                ", count=" + getCount() +
+                '}';
+    }
+
     private List<Subtask> subtasks = new ArrayList<>();
 
     public Epic(String name, String additional) {
@@ -53,13 +66,4 @@ public class Epic extends Task {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Epic{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", additional='" + additional + '\'' +
-                ", status=" + status +
-                '}';
-    }
 }

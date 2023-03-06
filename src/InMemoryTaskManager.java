@@ -1,13 +1,13 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class Manager {
-    private  Integer ids = 1;
-    private  Map<Integer,Task> tasks = new HashMap<>();
-    private  Map<Integer, Epic> epics = new HashMap<>();
-    private  Map<Integer, Subtask> subtasks = new HashMap<>();
+public class InMemoryTaskManager implements TaskManager {
+    private Integer ids = 1;
+    private Map<Integer, Task> tasks = new HashMap<>();
+    private Map<Integer, Epic> epics = new HashMap<>();
+    private Map<Integer, Subtask> subtasks = new HashMap<>();
+    private HistoryManager historyManager = InMemoryHistoryManager.getDefaultHistory();
 
+    @Override
     public void getAllTasks() {
         for (Task task : tasks.values()) {
             System.out.println(task);
@@ -21,21 +21,35 @@ public class Manager {
         System.out.println("--------------------------------------------");
     }
 
+    @Override
     public void removeAll() {
         tasks.clear();
         epics.clear();
         subtasks.clear();
     }
 
+    @Override
     public void getById(int id) {
         if (tasks.get(id) != null) {
-            System.out.println(tasks.get(id));
+            Task task = tasks.get(id);
+            int i = task.getCount() + 1;
+            task.setCount(i);
+            System.out.println(task);
+            historyManager.add(task);
         }
         if (epics.get(id) != null) {
-            System.out.println(epics.get(id));
+            Epic epic = epics.get(id);
+            int i = epic.getCount() + 1;
+            epic.setCount(i);
+            System.out.println(epic);
+            historyManager.add(epic);
         }
         if (subtasks.get(id) != null) {
-            System.out.println(subtasks.get(id));
+            Subtask subtask = subtasks.get(id);
+            int i = subtask.getCount() + 1;
+            subtask.setCount(i);
+            System.out.println(subtask);
+            historyManager.add(subtask);
         }
     }
 
@@ -61,6 +75,7 @@ public class Manager {
         ids++;
     }
 
+    @Override
     public void updateTask(Task task) {
         if (task instanceof Task) {
             tasks.put(task.getId(), task);
@@ -83,6 +98,7 @@ public class Manager {
         }
     }
 
+    @Override
     public void removeById(int id) {
         if (tasks.get(id) != null) {
             tasks.remove(id);
@@ -100,11 +116,17 @@ public class Manager {
         }
     }
 
+    @Override
     public void getAllSubtaskByEpicId(int id) {
         Epic epic = epics.get(id);
         List<Subtask> subtasks = epic.getSubtasks();
         for (Subtask subtask : subtasks) {
             System.out.println(subtask);
         }
+    }
+
+    @Override
+    public void getHistory() {
+        historyManager.getHistory();
     }
 }

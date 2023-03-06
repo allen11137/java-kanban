@@ -5,6 +5,18 @@ public class Subtask extends Task {
     private String additional;
     private Status status;
 
+    @Override
+    public String toString() {
+        return "Subtask{" +
+                "id=" + id +
+                ", epicId=" + epicId +
+                ", name='" + name + '\'' +
+                ", additional='" + additional + '\'' +
+                ", status=" + status +
+                ", count=" + getCount() +
+                '}';
+    }
+
     public Subtask(int epicId, String name, String additional) {
         this.epicId = epicId;
         this.name = name;
@@ -52,14 +64,4 @@ public class Subtask extends Task {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Subtask{" +
-                "id=" + id +
-                ", epicId=" + epicId +
-                ", name='" + name + '\'' +
-                ", additional='" + additional + '\'' +
-                ", status=" + status +
-                '}';
-    }
 }

@@ -3,6 +3,7 @@ public class Task {
     private String name;
     private String additional;
     private Status status;
+    private int count;
 
     public Task(String name, String additional) {
         this.name = name;
@@ -10,6 +11,25 @@ public class Task {
     }
 
     public Task() {
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", additional='" + additional + '\'' +
+                ", status=" + status +
+                ", count=" + count +
+                '}';
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public int getId() {
@@ -44,13 +64,4 @@ public class Task {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", additional='" + additional + '\'' +
-                ", status=" + status +
-                '}';
-    }
 }

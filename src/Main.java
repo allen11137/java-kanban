@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        Manager manager = new Manager();
+        TaskManager manager = new InMemoryTaskManager();
         Task task1 = new Task("first", "info 1");
         manager.createTask(task1);
         Task task2 = new Task("second", "info 2");
@@ -31,5 +31,15 @@ public class Main {
         manager.removeById(task1.getId());
         manager.removeById(epic1.getId());
         manager.getAllTasks();
+        manager.getById(2);
+        manager.getById(2);
+        manager.getById(2);
+        manager.getById(4);
+        manager.getById(4);
+        manager.getById(5);
+        manager.getById(7);
+        manager.getById(7);
+
+        manager.getHistory();
     }
 }
