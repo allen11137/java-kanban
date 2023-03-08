@@ -1,7 +1,15 @@
+import model.Epic;
+import model.Status;
+import model.Subtask;
+import model.Task;
+import service.InMemoryTaskManager;
+import service.Managers;
+import service.TaskManager;
+
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager manager = new InMemoryTaskManager();
+        TaskManager manager = new Managers().getDefault();
         Task task1 = new Task("first", "info 1");
         manager.createTask(task1);
         Task task2 = new Task("second", "info 2");
@@ -20,7 +28,7 @@ public class Main {
 
         task1.setStatus(Status.DONE);
         manager.updateTask(task1);
-        manager.getAllTasks();
+        System.out.println(manager.getAllTasks());
 
         subtask1.setStatus(Status.DONE);
         subtask3.setStatus(Status.DONE);
@@ -31,15 +39,15 @@ public class Main {
         manager.removeById(task1.getId());
         manager.removeById(epic1.getId());
         manager.getAllTasks();
-        manager.getById(2);
-        manager.getById(2);
-        manager.getById(2);
-        manager.getById(4);
-        manager.getById(4);
-        manager.getById(5);
-        manager.getById(7);
-        manager.getById(7);
+        System.out.println(manager.getById(2));
+        System.out.println(manager.getById(2));
+        System.out.println(manager.getById(2));
+        System.out.println(manager.getById(4));
+        System.out.println(manager.getById(4));
+        System.out.println(manager.getById(5));
+        System.out.println(manager.getById(7));
+        System.out.println(manager.getById(7));
 
-        manager.getHistory();
+        manager.getHistory().forEach(System.out::println);
     }
 }

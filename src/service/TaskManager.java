@@ -1,10 +1,16 @@
+package service;
+
+import model.Task;
+
+import java.util.List;
+
 public interface TaskManager {
-    void getAllTasks();
+    List<Task> getAllTasks();
     void removeAll();
-    void getById(int id);
+    Task getById(int id);
     void createTask(Task task);
     void updateTask(Task task);
     void removeById(int id);
     void getAllSubtaskByEpicId(int id);
-    void getHistory();
+    List<Task> getHistory();
 }

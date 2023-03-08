@@ -1,9 +1,10 @@
+package model;
+
 public class Task {
     private int id;
     private String name;
     private String additional;
     private Status status;
-    private int count;
 
     public Task(String name, String additional) {
         this.name = name;
@@ -15,21 +16,12 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "model.Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", additional='" + additional + '\'' +
                 ", status=" + status +
-                ", count=" + count +
                 '}';
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 
     public int getId() {
